@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -35,7 +34,7 @@ export class LoginComponentComponent implements OnInit {
           window.sessionStorage.setItem('id', data.id.toString());
           this.router.navigateByUrl(`/homepage`);
         } else {
-          console.log('Username o password errati');
+          this.loginFailed = true;
         }
       });
   }

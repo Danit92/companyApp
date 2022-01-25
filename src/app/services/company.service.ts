@@ -44,7 +44,7 @@ export class CompanyService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(`${operation} error: ${error}`);
+      console.log(`${operation} failed: ${error}`);
       return of(result as T);
     };
   }
