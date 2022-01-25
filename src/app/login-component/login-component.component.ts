@@ -14,6 +14,7 @@ export class LoginComponentComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
+  loginFailed = false;
 
   constructor(private router: Router, private auth: AuthenticationService) {}
 
