@@ -19,13 +19,13 @@
       <div class="form-group">
         <label for="phone">Phone</label>
         <input type="text" name="" id="phone" class="form-control" formControlName="phone"/>
-        <span class="help-block text-danger fw-normal" *ngIf="companyForm.get('phone')?.invalid && companyForm.get('phone')?.touched">Inserire un nome</span>
+        <span class="help-block text-danger fw-normal" *ngIf="companyForm.get('phone')?.invalid && companyForm.get('phone')?.touched">Inserire un numero di telefono</span>
       </div>
 
       <div class="form-group">
         <label for="revenue">Revenue</label>
         <input type="number" name="" id="revenue" class="form-control" formControlName="revenue"/>
-        <span class="help-block text-danger fw-normal" *ngIf="companyForm.get('revenue')?.invalid && companyForm.get('revenue')?.touched">Inserire un nome</span>
+        <span class="help-block text-danger fw-normal" *ngIf="companyForm.get('revenue')?.invalid && companyForm.get('revenue')?.touched">Inserire una revenue</span>
       </div>
       <button type="submit" [disabled]="!companyForm.valid" class="btn btn-dark text-light mt-4">Add Company</button>
     </form>
