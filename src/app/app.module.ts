@@ -8,21 +8,19 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
+    LoginComponentComponent,
     CompanyFormComponent,
     HomepageComponent,
     CompanyDetailsComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,11 +19,9 @@
         <span *ngIf="loginFailed" class="text-danger fw-normal">
           Login Fallito! Username o Password errati!
         </span>
-        <div class="form-group">
-          <button [disabled]="loginForm.invalid" class="btn btn-dark text-light mt-3 px-4" type="submit">
-            Login
-          </button>
-        </div>
+        <button [disabled]="loginForm.invalid" class="btn btn-dark text-light mt-3 px-4" type="submit">
+          Login
+        </button>
       </form>
     </div>
   </div>
