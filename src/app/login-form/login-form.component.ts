@@ -8,19 +8,18 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './login-component.component.html',
   styleUrls: ['./login-component.component.css'],
 })
-export class LoginComponentComponent implements OnInit {
-  loginForm = new FormGroup({
+export class LoginFormComponent implements OnInit {
+  loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  loginFailed = false;
+
+  loginFailed: boolean = false;
 
   constructor(private router: Router, private auth: AuthenticationService) {}
 
   ngOnInit(): void {
-    if (window.sessionStorage.getItem('id')) {
-      this.router.navigateByUrl(`/homepage`);
-    }
+    
   }
 
   onSubmit(): void {
@@ -31,8 +30,7 @@ export class LoginComponentComponent implements OnInit {
       )
       .subscribe((data) => {
         if (data) {
-          window.sessionStorage.setItem('id', data.id.toString());
-          this.router.navigateByUrl(`/homepage`);
+          this.router.navigate([`/homepage`, data.id]);
         } else {
           this.loginFailed = true;
         }
