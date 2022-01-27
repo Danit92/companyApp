@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-4 col-4 text-end">
       <span
-        class="text-light fw-bolder border-0 rounded-circle p-2 bg-info "
+        class="text-light fw-bolder border-0 rounded-circle p-2 bg-info"
         (click)="logout()">
     {{ avatar | uppercase }}
     </span>
@@ -16,7 +16,7 @@
 
   <div class="row justify-content-between">
     <div class="col-md-7">
-      <span class="mt-5" *ngIf="companies.length === 0 ">Nessuna azienda presente</span>
+      <span class="mt-5" *ngIf="companies.length === 0">Nessuna azienda presente</span>
       <ul class="list-group list-unstyled" *ngIf="companies.length > 0">
         <li class="mt-4 list-style-none" *ngFor="let comp of companies">
           <app-company-details [company]="comp" (click)="delete(comp)"></app-company-details>          

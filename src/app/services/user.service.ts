@@ -13,13 +13,12 @@ export class UserService {
 
   getUser(id: number): Observable<User> {
     return this.http
-      .get<User>(`${this.userUrl}/${id}`)
-      .pipe(catchError(this.handleError<User>('getUser')));
+      .get<User>(`${this.userUrl}/${id}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${JSON.stringify(error)}`);
+      console.log(error);
       return of(result as T);
     };
   }

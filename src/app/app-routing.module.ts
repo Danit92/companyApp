@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from './auth-guard.service';
 import { HomepageComponent } from './homepage/homepage.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponentComponent } from './login-component/login-component.component';
 
 const routes: Routes = [
-  { path: '', component: LoginFormComponent },
-  { path: 'homepage/:id', component: HomepageComponent, canActivate: [AuthGuardService] },
-  { path: 'not-found', component: PageNotFoundComponent },
-  { path: '**', redirectTo: 'not-found' },
+  {'path': '', redirectTo: 'login', pathMatch: 'full'},
+  {'path': 'login', component: LoginComponentComponent},
+  {'path': 'homepage', component: HomepageComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
