@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import { CompanyService } from '../services/company.service';
 import { Company } from '../models/company';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-homepage',
@@ -17,25 +18,24 @@ export class HomepageComponent implements OnInit {
   companies!: Company[];
 
   constructor(
-    private router: Router,
+    private router: ActivatedRoute,
     private companyService: CompanyService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthenticationService
   ) {
     companyService.newCompany$.subscribe((company) =>
       this.companies.push(company)
     );
   }
 
-  ngOnInit(): void {
-    if (!window.sessionStorage.getItem('id')) {
-      this.router.navigateByUrl('/login');
-    }
+  ngOnInit():void {
     this.getAvatar();
     this.getCompanies();
   }
 
   getAvatar(): void {
-    const id = Number(window.sessionStorage.getItem('id'));
+    const id = Number(this.router.snapshot.params['id']);
+    console.log(id)
     this.userService
       .getUser(id)
       .subscribe(
@@ -45,7 +45,7 @@ export class HomepageComponent implements OnInit {
       );
   }
 
-  getCompanies(): void {
+  getCompanies() {
     this.companyService
       .getCompanies()
       .subscribe((companies) => (this.companies = companies));
@@ -59,7 +59,8 @@ export class HomepageComponent implements OnInit {
   }
 
   logout(): void {
-    window.sessionStorage.clear();
-    this.router.navigateByUrl('/login');
+    this.authService.logout()
+    // window.sessionStorage.clear();
+    // this.router.navigateByUrl('/login');
   }
 }
